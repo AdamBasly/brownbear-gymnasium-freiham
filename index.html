@@ -25,38 +25,86 @@
             overflow: hidden;
         }
 
-        .iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+            .iframe-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+
         .link-container {
             text-align: center;
             margin: 20px;
         }
 
-        .link-container a {
+            .link-container a {
                 text-decoration: none;
                 color: #3498db;
                 font-size: 18px;
             }
 
-        .link-container a:hover {
-            text-decoration: underline;
+                .link-container a:hover {
+                    text-decoration: underline;
+                }
+
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: center;
+            outline: none;
+            font-size: 18px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: #555;
+            }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
         }
     </style>
 </head>
 <body>
-    <h1>Der Braunbär</h1>
+    <h1 style="background-color:red; border-radius:30px">Der Braunbär</h1>
     <iframe src="https://scratch.mit.edu/projects/1118214438/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
     <br />
-    <div class="link-container"> <a href="https://scratch.mit.edu/projects/1118214438/#camera" style="text-decoration:none; color:orange;">Zu Scratch wegen Kamerafunktion</a> </div>
-    <div class="iframe-container">
-
-        <iframe src="https://1drv.ms/p/c/bdbc5d92eeca8645/IQSYFGHeXJRnSrzLCpCpQJixAZzN7Ol-ABwVkQxTc8S_npY" scrolling="no"></iframe>
+    <div class="link-container">
+        <a href="https://scratch.mit.edu/projects/1118214438/#camera" style="text-decoration:none; color:orange;">Zu Scratch wegen Kamerafunktion</a>
     </div>
+    <button class="collapsible">PowerPoint anzeigen</button>
+    <div class="content">
+        <div class="iframe-container">
+            <iframe src="https://1drv.ms/p/c/bdbc5d92eeca8645/IQSYFGHeXJRnSrzLCpCpQJixAZzN7Ol-ABwVkQxTc8S_npY" scrolling="no"></iframe>
+        </div>
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+    <footer>
+        <p>&copy; 2025 Adam Basly. Alle Rechte vorbehalten.</p>
+    </footer>
 </body>
 </html>
